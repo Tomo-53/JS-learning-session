@@ -296,6 +296,11 @@ function showCompletionMessage() {
     setTimeout(() => {
         message.style.opacity = '0';
         message.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        
+        // メッセージが消える際にinactive効果も削除
+        const main = document.querySelector('main');
+        main.classList.remove('inactive');
+        
         setTimeout(() => {
             if (message.parentNode) {
                 message.parentNode.removeChild(message);
@@ -323,6 +328,10 @@ function setupWorkshopCompletion() {
             
             // チェックマークを軽快に跳ねさせる
             checkbox.style.animation = 'bounce-check 0.5s ease-out';
+            
+            // 背景にinactive効果を追加してメッセージを見やすくする
+            const main = document.querySelector('main');
+            main.classList.add('inactive');
             
             // 「お疲れ様でした！」メッセージを表示
             if (completionMessage) {
